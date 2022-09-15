@@ -8,7 +8,6 @@ namespace SynelTest_13_09.Controllers;
 [Route("[controller]")]
 public class EmployeeController
 {
-
     private readonly Context _context;
 
 
@@ -21,7 +20,7 @@ public class EmployeeController
     public ActionResult<List<Employee>> GetAllEmployees()
 
     {
-        
-        return new ActionResult<List<Employee>>(_context.Employees.ToList());
+        var employees = _context.Employees.OrderBy(e => e.Surname).ToList();
+        return new ActionResult<List<Employee>>(employees);
     }
 }

@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {FileUpload} from "./FileUpload";
+import Person from "./Person";
+import Search from "./Search";
 
 export class Home extends Component {
     static displayName = Home.name;
@@ -16,43 +18,9 @@ export class Home extends Component {
     static renderEmployeesTable(employees) {
         return (
 
-
             <>
                 <FileUpload/>
-                <table className='table table-striped' aria-labelledby="tabelLabel1">
-                    <thead>
-                    <tr>
-                        <th>PayrolNumber</th>
-                        <th>Forename</th>
-                        <th>Surname</th>
-                        <th>DateOfBirth</th>
-                        <th>Telephone</th>
-                        <th>Mobile</th>
-                        <th>Address</th>
-                        <th>Address2</th>
-                        <th>Postcode</th>
-                        <th>EmailHome</th>
-                        <th>StartDate</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {employees.map(employee =>
-                        <tr key={employee.payrollNumber}>
-                            <td>{employee.payrollNumber}</td>
-                            <td>{employee.forename}</td>
-                            <td>{employee.surname}</td>
-                            <td>{employee.dateOfBirth}</td>
-                            <td>{employee.telephone}</td>
-                            <td>{employee.mobile}</td>
-                            <td>{employee.address}</td>
-                            <td>{employee.address2}</td>
-                            <td>{employee.postcode}</td>
-                            <td>{employee.emailHome}</td>
-                            <td>{employee.startDate}</td>
-                        </tr>
-                    )}
-                    </tbody>
-                </table>
+                <Search details={employees}/>
             </>
         );
     }

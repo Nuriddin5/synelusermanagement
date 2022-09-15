@@ -10,6 +10,10 @@ public class Context : DbContext
     {
     }
 
+
+    /**
+    * For Resolve error Json serialization for DateOnly
+    */
     protected override void ConfigureConventions(ModelConfigurationBuilder builder)
     {
         builder.Properties<DateOnly>()
