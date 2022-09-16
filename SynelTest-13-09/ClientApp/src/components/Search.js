@@ -45,7 +45,7 @@ function Search({details}) {
                     </thead>
                     <tbody>
                     {filteredPersons.map(employee =>
-                        <Person employee={employee}/>
+                        <Person key={employee.payrollNumber} employee={employee}/>
                     )}
                     </tbody>
                 </table>

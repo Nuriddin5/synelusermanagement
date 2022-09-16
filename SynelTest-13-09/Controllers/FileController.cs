@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SynelTest_13_09.Model;
+using SynelTest_13_09.Utils;
 
 [Route("api/file")]
 [ApiController]
@@ -23,5 +24,11 @@ public class FileController : ControllerBase
         {
             return StatusCode(StatusCodes.Status500InternalServerError);
         }
+    }
+
+    [HttpGet]
+    public ActionResult<List<Values>> GetValues()
+    {
+        return new ActionResult<List<Values>>(FromCsv.GetValues());
     }
 }

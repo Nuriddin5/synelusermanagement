@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\zuxra\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\zuxra\\.nuget\\packages"
+    ]
+  }
+}

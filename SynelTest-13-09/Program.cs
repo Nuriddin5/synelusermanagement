@@ -1,6 +1,8 @@
+using System.Text.Json;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Net.Http.Headers;
 using SynelTest_13_09.Data;
+using SynelTest_13_09.Utils;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +24,9 @@ builder.Services.AddCors(options =>
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<Context>(options =>
     options.UseSqlServer(connectionString));
+
+// builder.Services.Configure<JsonSerializerOptions>(options =>
+//     options.Converters.Add(new DateOnlyJsonConverter()));
 
 var app = builder.Build();
 

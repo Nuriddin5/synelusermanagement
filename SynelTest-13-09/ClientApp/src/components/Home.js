@@ -40,7 +40,7 @@ export class Home extends Component {
     }
 
     async populateEmployeeData() {
-        const response = await fetch('employee');
+        const response = await fetch('api/file');
         const data = await response.json();
         this.setState({employees: data, loading: false});
     }
