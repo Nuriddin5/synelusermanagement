@@ -1,6 +1,5 @@
 ﻿import React, {useState} from 'react';
 import Person from "./Person";
-import {Button} from "./Button";
 
 function Search({details}) {
 
