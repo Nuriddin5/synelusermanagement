@@ -2,5 +2,5 @@
 
 public class FileDto
 {
-    public string  filename { get; set; }
+    public string?  Filename { get; set; }
 }

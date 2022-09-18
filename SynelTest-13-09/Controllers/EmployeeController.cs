@@ -18,13 +18,7 @@ public class EmployeeController : ControllerBase
         _context = context;
     }
 
-    [HttpGet]
-    public ActionResult<List<Employee>> GetAllEmployees()
-
-    {
-        var employees = _context.Employees.OrderBy(e => e.Surname).ToList();
-        return new ActionResult<List<Employee>>(employees);
-    }
+  
 
     [HttpPost]
     public ActionResult<List<Values>> GetEmployees([FromBody] FileDto fileDto)
@@ -36,11 +30,11 @@ public class EmployeeController : ControllerBase
             return NotFound("File not uploaded");
         }
 
-        if (!System.IO.File.Exists(path + "\\" + fileDto.filename))
+        if (!System.IO.File.Exists(path + "\\" + fileDto.Filename))
         {
             return NotFound("File not found");
         }
 
-        return Ok(FromCsv.GetValues(fileDto.filename));
+        return Ok(FromCsv.GetValues(fileDto.Filename));
     }
 }

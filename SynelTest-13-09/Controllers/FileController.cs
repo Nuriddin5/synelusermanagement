@@ -13,11 +13,14 @@ public class FileController : ControllerBase
     {
         try
         {
-            string path = Path.Combine(Directory.GetCurrentDirectory(), "Files", file.FileName);
-
-            using (Stream stream = new FileStream(path, FileMode.Create))
+            if (file.FileName != null)
             {
-                file.FormFile.CopyTo(stream);
+                string path = Path.Combine(Directory.GetCurrentDirectory(), "Files", file.FileName);
+
+                using (Stream stream = new FileStream(path, FileMode.Create))
+                {
+                    file.FormFile?.CopyTo(stream);
+                }
             }
 
             return StatusCode(StatusCodes.Status201Created);

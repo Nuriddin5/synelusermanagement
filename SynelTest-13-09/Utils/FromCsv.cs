@@ -5,7 +5,7 @@ namespace SynelTest_13_09.Utils;
 
 class FromCsv
 {
-    public static List<Values> GetValues(string filename)
+    public static List<Values> GetValues(string? filename)
     {
         var path = "C:\\Users\\zuxra\\Desktop\\CourseFullstack\\projects\\SynelTest-13-09\\SynelTest-13-09\\Files";
 

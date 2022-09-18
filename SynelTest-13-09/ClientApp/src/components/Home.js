@@ -21,7 +21,7 @@ function Home() {
             const response = await fetch('https://localhost:7290/api/Employee', {
                 method: 'POST',
                 body: JSON.stringify({
-                    filename: 'dataset.csv'
+                    filename: fileName
                 }),
                 headers: {
                     'Content-Type': 'application/json',
@@ -93,7 +93,8 @@ function Home() {
         <ul>
             {err && <h2>{err}</h2>}
 
-            <p> Upload .csv file for importing employees</p>
+            <h2> Upload .csv file for importing employees</h2>
+            <p> You can upload only .csv files</p>
             <input type="file" onChange={saveFile}/>
 
             <input type="button" value="upload" onClick={uploadFile}/>
