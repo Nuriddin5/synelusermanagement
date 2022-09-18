@@ -28,14 +28,7 @@ public class FileController : ControllerBase
         }
     }
 
-    [HttpGet]
-    [Route("api/file")]
-    public ActionResult<List<Values>> GetValues()
-    {
-        return new ActionResult<List<Values>>(FromCsv.GetValues("dataset.csv"));
-    }
-    
-    
+
     [HttpPost]
     [Route(template: "api/get")]
     public ActionResult<List<Values>> GetEmployees([FromBody] FileDto fileDto)
