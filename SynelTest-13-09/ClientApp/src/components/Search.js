@@ -1,9 +1,11 @@
 ﻿import React, {useState} from 'react';
 import Person from "./Person";
+import {Button} from "./Button";
 
 function Search({details}) {
 
     const [searchField, setSearchField] = useState("");
+
 
     const filteredPersons = details.filter(
         person => {
@@ -53,21 +55,24 @@ function Search({details}) {
         );
     }
 
-    return (
-        <section className="garamond mt-5">
-            <div className="navy georgia ma0 grow">
-                <h2 className="f2">Search employee by forename and surname</h2>
-            </div>
-            <div className="pa2">
-                <input
-                    className="pa3 bb br3 grow b--none bg-lightest-blue ma3"
-                    type="search"
-                    placeholder="Search People"
-                    onChange={handleChange}
-                />
-            </div>
-            {searchList()}
-        </section>
+    return (<>
+            {/*<button className="btn btn-primary" onClick={handleClick}>Import</button>*/}
+            <section className="garamond mt-5">
+                <div className="navy georgia ma0 grow">
+                    <h2 className="f2">Search employee by forename and surname</h2>
+                </div>
+                <div className="pa2">
+                    <input
+                        className="pa3 bb br3 grow b--none bg-lightest-blue ma3"
+                        type="search"
+                        placeholder="Search People"
+                        onChange={handleChange}
+                    />
+                </div>
+                {searchList()}
+            </section>
+
+        </>
     );
 }
 

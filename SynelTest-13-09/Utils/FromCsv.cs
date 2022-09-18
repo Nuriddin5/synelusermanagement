@@ -5,13 +5,25 @@ namespace SynelTest_13_09.Utils;
 
 class FromCsv
 {
-    public static List<Values> GetValues()
+    public static List<Values> GetValues(string filename)
     {
+        var path = "C:\\Users\\zuxra\\Desktop\\CourseFullstack\\projects\\SynelTest-13-09\\SynelTest-13-09\\Files";
+
+        if (IsDirectoryEmpty(path))
+        {
+            return new List<Values>();
+        }
+
         return File.ReadAllLines(
-                "C:\\Users\\zuxra\\Desktop\\CourseFullstack\\projects\\SynelTest-13-09\\SynelTest-13-09\\Files\\dataset.csv")
+                path + "\\" + filename)
             .Skip(1)
-            .Select(v => Values.FromCsv(v))
+            .Select(Values.FromCsv)
             .ToList();
+    }
+
+    public static bool IsDirectoryEmpty(string path)
+    {
+        return !Directory.EnumerateFileSystemEntries(path).Any();
     }
 }
 

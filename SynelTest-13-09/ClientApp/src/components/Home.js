@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React, {Component, useState} from 'react';
 import {FileUpload} from "./FileUpload";
-import Person from "./Person";
 import Search from "./Search";
 
 export class Home extends Component {
     static displayName = Home.name;
+    
 
     constructor(props) {
         super(props);
@@ -15,11 +15,14 @@ export class Home extends Component {
         this.populateEmployeeData();
     }
 
+    
+    
+
     static renderEmployeesTable(employees) {
+        
         return (
 
-            <>
-                <FileUpload/>
+            <> 
                 <Search details={employees}/>
             </>
         );

@@ -1,4 +1,4 @@
-﻿import React, { useState } from "react";
+﻿import React, {useState} from "react";
 import axios from "axios";
 
 export const FileUpload = () => {
@@ -26,8 +26,9 @@ export const FileUpload = () => {
 
     return (
         <>
-            <input type="file" onChange={saveFile} />
-            <input type="button" value="upload" onClick={uploadFile} />
+           <p> Upload .csv file for importing employees</p>
+            <input type="file" onChange={saveFile}/>
+            <input type="button" value="upload" onClick={uploadFile}/>
         </>
     );
 };
