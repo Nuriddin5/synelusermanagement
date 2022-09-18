@@ -29,22 +29,5 @@ public class FileController : ControllerBase
     }
 
 
-    [HttpPost]
-    [Route(template: "api/get")]
-    public ActionResult<List<Values>> GetEmployees([FromBody] FileDto fileDto)
-    {
-        var path = "C:\\Users\\zuxra\\Desktop\\CourseFullstack\\projects\\SynelTest-13-09\\SynelTest-13-09\\Files";
-
-        if (FromCsv.IsDirectoryEmpty(path))
-        {
-            return NotFound("File not uploaded");
-        }
-
-        if (!System.IO.File.Exists(path + "\\" + fileDto.filename))
-        {
-            return NotFound("File not found");
-        }
-
-        return Ok(FromCsv.GetValues(fileDto.filename));
-    }
+    
 }

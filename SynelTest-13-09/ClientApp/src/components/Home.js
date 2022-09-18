@@ -18,7 +18,7 @@ function Home() {
         setIsShown(true);
 
         try {
-            const response = await fetch('https://localhost:7290/api/get', {
+            const response = await fetch('https://localhost:7290/api/Employee', {
                 method: 'POST',
                 body: JSON.stringify({
                     filename: 'dataset.csv'

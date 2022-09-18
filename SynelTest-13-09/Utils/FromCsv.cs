@@ -18,6 +18,7 @@ class FromCsv
                 path + "\\" + filename)
             .Skip(1)
             .Select(Values.FromCsv)
+            .OrderBy(e => e.Surname)//for sorting ascending order by surname 
             .ToList();
     }
 

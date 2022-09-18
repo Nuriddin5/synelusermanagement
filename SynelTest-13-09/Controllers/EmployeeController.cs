@@ -1,12 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SynelTest_13_09.Data;
+using SynelTest_13_09.Dtos;
 using SynelTest_13_09.NewFolder;
+using SynelTest_13_09.Utils;
 
 namespace SynelTest_13_09.Controllers;
 
 [ApiController]
-[Route("[controller]")]
-public class EmployeeController
+[Route("api/[controller]")]
+public class EmployeeController : ControllerBase
 {
     private readonly Context _context;
 
@@ -22,5 +24,23 @@ public class EmployeeController
     {
         var employees = _context.Employees.OrderBy(e => e.Surname).ToList();
         return new ActionResult<List<Employee>>(employees);
+    }
+
+    [HttpPost]
+    public ActionResult<List<Values>> GetEmployees([FromBody] FileDto fileDto)
+    {
+        var path = "C:\\Users\\zuxra\\Desktop\\CourseFullstack\\projects\\SynelTest-13-09\\SynelTest-13-09\\Files";
+
+        if (FromCsv.IsDirectoryEmpty(path))
+        {
+            return NotFound("File not uploaded");
+        }
+
+        if (!System.IO.File.Exists(path + "\\" + fileDto.filename))
+        {
+            return NotFound("File not found");
+        }
+
+        return Ok(FromCsv.GetValues(fileDto.filename));
     }
 }
