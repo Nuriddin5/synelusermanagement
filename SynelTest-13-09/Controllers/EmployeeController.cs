@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SynelTest_13_09.Data;
 using SynelTest_13_09.Dtos;
-using SynelTest_13_09.NewFolder;
+using SynelTest_13_09.Model;
 using SynelTest_13_09.Utils;
 
 namespace SynelTest_13_09.Controllers;
@@ -21,7 +21,7 @@ public class EmployeeController : ControllerBase
   
 
     [HttpPost]
-    public ActionResult<List<Values>> GetEmployees([FromBody] FileDto fileDto)
+    public ActionResult<List<Employee>> GetEmployees([FromBody] FileDto fileDto)
     {
         var path = "C:\\Users\\zuxra\\Desktop\\CourseFullstack\\projects\\SynelTest-13-09\\SynelTest-13-09\\Files";
 
@@ -35,6 +35,19 @@ public class EmployeeController : ControllerBase
             return NotFound("File not found");
         }
 
-        return Ok(FromCsv.GetValues(fileDto.Filename));
+        var employeesFromCsv
+            = FromCsv.GetValues(fileDto.Filename);
+        if (_context.Employees.ToList().Count == 0)
+        {
+            foreach (var employee in employeesFromCsv)
+            {
+                _context.Add(employee);
+                
+            }
+
+            _context.SaveChanges();
+        }
+        
+        return Ok(_context.Employees.ToList());
     }
 }

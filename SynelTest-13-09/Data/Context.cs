@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SynelTest_13_09.NewFolder;
+using SynelTest_13_09.Model;
 
 namespace SynelTest_13_09.Data;
 
