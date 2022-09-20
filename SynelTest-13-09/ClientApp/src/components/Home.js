@@ -10,7 +10,6 @@ function Home() {
     const [isFileUploaded, setFileUploaded] = useState(false);
     const [isShown, setIsShown] = useState(false);
     const [data, setData] = useState([]);
-
     const [isLoading, setIsLoading] = useState(false);
     const [err, setErr] = useState('');
 
@@ -42,10 +41,10 @@ function Home() {
             setErr(err.message);
         } finally {
             setIsLoading(false);
+            window.location.reload(false);
         }
     };
 
-    // const [isCsvFile,]
 
     const saveFile = (e) => {
         console.log(e.target.files[0]);
@@ -103,7 +102,8 @@ function Home() {
 
             {isLoading && <h2>Loading...</h2>}
 
-            {isShown && (<Search details={data}/>)}
+          <Search details={data}/>
+            
 
 
         </ul>
