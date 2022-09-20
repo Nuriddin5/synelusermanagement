@@ -19,6 +19,9 @@ export default class App extends Component {
                     <Route path="api/Employees">
                         <Route path=":id" element={<ViewEmployee />} />
                     </Route>
+                    <Route path="api/Employees/delete">
+                        <Route path=":id" element={<Home />} />
+                    </Route>
                     <Route path={"/"} element={<Home/>}/>
 
                     <Route path="*" element={<NotFoundPage/>} />
