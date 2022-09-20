@@ -89,12 +89,12 @@ function Search() {
                     <tbody>
                     {filteredPersons.map(employee =>
                         <tr key={employee.id}>
-                            <td><a href={"/api/Employees/" + employee.id}>{employee.payrollNumber}</a></td>
+                            <td><a href={"employee/" + employee.id}>{employee.payrollNumber}</a></td>
                             <td>{employee.forename}</td>
                             <td>{employee.surname}</td>
                             <td>{employee.address}</td>
                             <td>{employee.emailHome}</td>
-                            <td><a onClick={deleteEmployee} href={`api/Employees/delete/${employee.id}`}>
+                            <td><a onClick={deleteEmployee} href={`employee/delete/${employee.id}`}>
                                 <button className="btn btn-danger">Delete</button>
                             </a></td>
                         </tr>
