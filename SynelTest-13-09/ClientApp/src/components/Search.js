@@ -1,43 +1,11 @@
 ﻿import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import {useParams} from "react-router-dom";
-
 
 function Search() {
 
     const [searchField, setSearchField] = useState("");
     const [employees, setEmployees] = useState([]);
     const [err, setErr] = useState();
-    const {id} = useParams();
-
-
-    const deleteEmployee = async () => {
-
-        try {
-            const response = await fetch('https://localhost:7290/api/Employees/' + id, {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Accept: 'application/json',
-                },
-            });
-
-            if (!response.ok) {
-                throw new Error(`Error! status: ${response.status}`);
-            }
-
-            const result = await response.json();
-
-            console.log('result is: ', JSON.stringify(result, null, 4));
-
-            // setData(result);
-        } catch (err) {
-            // setErr(err.message);
-        } finally {
-            // setIsLoading(false);
-            window.location.reload(false);
-        }
-    };
 
 
     useEffect(() => {
@@ -89,14 +57,11 @@ function Search() {
                     <tbody>
                     {filteredPersons.map(employee =>
                         <tr key={employee.id}>
-                            <td><a href={"employee/" + employee.id}>{employee.payrollNumber}</a></td>
+                            <td><a href={"/api/Employees/" + employee.id}>{employee.payrollNumber}</a></td>
                             <td>{employee.forename}</td>
                             <td>{employee.surname}</td>
                             <td>{employee.address}</td>
                             <td>{employee.emailHome}</td>
-                            <td><a onClick={deleteEmployee} href={`employee/delete/${employee.id}`}>
-                                <button className="btn btn-danger">Delete</button>
-                            </a></td>
                         </tr>
                     )}
                     </tbody>

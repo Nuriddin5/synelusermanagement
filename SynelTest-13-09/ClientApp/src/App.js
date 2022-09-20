@@ -16,16 +16,12 @@ export default class App extends Component {
             <Layout>
                 <Routes>
 
-                    <Route path="employee">
-                        <Route path=":id" element={<ViewEmployee/>}/>
-                    </Route>
-                    <Route path="employee/delete">
-                        <Route path=":id" element={<Home/>}/>
+                    <Route path="api/Employees">
+                        <Route path=":id" element={<ViewEmployee />} />
                     </Route>
                     <Route path={"/"} element={<Home/>}/>
 
-
-                    <Route path="*" element={<NotFoundPage/>}/>
+                    <Route path="*" element={<NotFoundPage/>} />
                     {/*<Redirect to="/404" />*/}
 
                     {/*<Route path={'/api/Employees/:id'} element={<ViewEmployee/>}/>;*/}
@@ -36,7 +32,7 @@ export default class App extends Component {
                     {/*    const {element, ...rest} = route;*/}
                     {/*    return <Route key={index} {...rest} element={element}/>;*/}
                     {/*})}*/}
-
+                    
                 </Routes>
             </Layout>
         );

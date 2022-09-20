@@ -18,7 +18,6 @@ public class EmployeeController : ControllerBase
         _context = context;
     }
 
-  
 
     [HttpPost]
     public ActionResult<List<Employee>> GetEmployees([FromBody] FileDto fileDto)
@@ -37,17 +36,14 @@ public class EmployeeController : ControllerBase
 
         var employeesFromCsv
             = FromCsv.GetValues(fileDto.Filename);
-        if (_context.Employees.ToList().Count == 0)
-        {
-            foreach (var employee in employeesFromCsv)
-            {
-                _context.Add(employee);
-                
-            }
 
-            _context.SaveChanges();
+        foreach (var employee in employeesFromCsv)
+        {
+            _context.Add(employee);
         }
-        
-        return Ok(_context.Employees.ToList());
+
+        _context.SaveChanges();
+
+        return Ok();
     }
 }

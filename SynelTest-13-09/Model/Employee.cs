@@ -6,7 +6,9 @@ namespace SynelTest_13_09.Model
 {
     public class Employee
     {
-        [Key] public string? PayrollNumber { get; set; }
+        [Key]
+        public int Id { get; set; }
+         public string? PayrollNumber { get; set; }
         public string? Forename { get; set; }
         public string? Surname { get; set; }
 

@@ -25,21 +25,12 @@ namespace SynelTest_13_09.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
         {
-          if (_context.Employees == null)
-          {
-              return NotFound();
-          }
             return await _context.Employees.ToListAsync();
         }
 
-        // GET: api/Employees/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Employee>> GetEmployee(int id)
         {
-          if (_context.Employees == null)
-          {
-              return NotFound();
-          }
             var employee = await _context.Employees.FindAsync(id);
 
             if (employee == null)
@@ -72,38 +63,25 @@ namespace SynelTest_13_09.Controllers
                 {
                     return NotFound();
                 }
-                else
-                {
-                    throw;
-                }
+
+                throw;
             }
 
             return NoContent();
         }
 
-        // POST: api/Employees
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Employee>> PostEmployee(Employee employee)
         {
-          if (_context.Employees == null)
-          {
-              return Problem("Entity set 'Context.Employees'  is null.");
-          }
             _context.Employees.Add(employee);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetEmployee", new { id = employee.Id }, employee);
         }
 
-        // DELETE: api/Employees/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteEmployee(int id)
         {
-            if (_context.Employees == null)
-            {
-                return NotFound();
-            }
             var employee = await _context.Employees.FindAsync(id);
             if (employee == null)
             {
