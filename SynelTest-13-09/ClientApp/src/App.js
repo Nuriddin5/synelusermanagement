@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import {Redirect, Route, Routes} from "react-router-dom";
-import AppRoutes from "./AppRoutes";
+import {Route, Routes} from "react-router-dom";
 import {Layout} from './components/Layout';
 import './custom.css';
 import ViewEmployee from "./components/ViewEmployee";
 import Home from "./components/Home";
 import NotFoundPage from "./components/NotFoundPage";
+import DeleteEmployee from "./components/DeleteEmployee";
+import CreateEmployee from "./components/CreateEmployee";
 
 
 export default class App extends Component {
@@ -16,26 +17,22 @@ export default class App extends Component {
             <Layout>
                 <Routes>
 
-                    <Route path="api/Employees">
-                        <Route path=":id" element={<ViewEmployee />} />
+
+                    <Route path={"employee/delete"}>
+                        <Route path=":id" element={<DeleteEmployee/>}/>
                     </Route>
-                    <Route path="api/Employees/delete">
-                        <Route path=":id" element={<Home />} />
-                    </Route>
+
                     <Route path={"/"} element={<Home/>}/>
 
-                    <Route path="*" element={<NotFoundPage/>} />
-                    {/*<Redirect to="/404" />*/}
+                    <Route path={"/employee/create"} element={<CreateEmployee/>}/>
 
-                    {/*<Route path={'/api/Employees/:id'} element={<ViewEmployee/>}/>;*/}
-
-
-                    {/*{AppRoutes.map(e =>  <Route exact path={e.path} element={e.element} />)}*/}
-                    {/*{AppRoutes.map((route, index) => {*/}
-                    {/*    const {element, ...rest} = route;*/}
-                    {/*    return <Route key={index} {...rest} element={element}/>;*/}
-                    {/*})}*/}
+                    <Route path="employee">
+                        <Route path=":id" element={<ViewEmployee/>}/>
+                    </Route>
                     
+                    <Route path="*" element={<NotFoundPage/>}/>
+
+
                 </Routes>
             </Layout>
         );

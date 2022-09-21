@@ -9,12 +9,16 @@ function Search() {
     const [employees, setEmployees] = useState([]);
     const [err, setErr] = useState();
     const {id} = useParams();
+    // {console.log(id)}
+
+
+
 
 
     const deleteEmployee = async () => {
 
         try {
-            const response = await fetch('https://localhost:7290/api/Employees/' + id, {
+            const response = await fetch(`https://localhost:7290/api/Employees/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -28,14 +32,12 @@ function Search() {
 
             const result = await response.json();
 
-            console.log('result is: ', JSON.stringify(result, null, 4));
-
             // setData(result);
         } catch (err) {
             // setErr(err.message);
         } finally {
             // setIsLoading(false);
-            window.location.reload(false);
+            // window.location.reload(false);
         }
     };
 
@@ -44,7 +46,7 @@ function Search() {
         const fetch = async () => {
             try {
                 const {data} = await axios.get(`https://localhost:7290/api/Employees`);
-                console.log(data);
+                // console.log(data);
                 setEmployees(data);
             } catch (err) {
                 console.error(err);
