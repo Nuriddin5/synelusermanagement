@@ -1,8 +1,8 @@
 ﻿import React, {useEffect, useState} from 'react';
 import axios from "axios";
+import {ToastContainer} from "react-toastify";
 
 function Home() {
-
 
     const [file, setFile] = useState();
     const [fileName, setFileName] = useState();
@@ -12,10 +12,10 @@ function Home() {
     const [searchField, setSearchField] = useState("");
     const [employees, setEmployees] = useState([]);
 
-
+    
     const handleClick = async () => {
         try {
-            const response = await fetch('https://localhost:7290/api/Employee', {
+            const response = await fetch('https://localhost:7290/api/import', {
                 method: 'POST',
                 body: JSON.stringify({
                     filename: fileName
@@ -34,7 +34,8 @@ function Home() {
             setErr(err.message);
         } finally {
             setIsLoading(false);
-            window.location.reload(false);
+            window.location.reload();
+
         }
     };
 
@@ -140,21 +141,20 @@ function Home() {
 
 
     return (
-
         <>
             {err && <h2>{err}</h2>}
-
             <h2> Upload .csv file for importing employees</h2>
             <p> You can upload only .csv files</p>
             <input type="file" onChange={saveFile}/>
 
             <input type="button" value="upload" onClick={uploadFile}/>
             <p></p>
-            {isFileUploaded && (<button className="btn btn-primary" onClick={handleClick}>Import</button>)}
+            {isFileUploaded && (<div>
+                <button className="btn btn-primary" onClick={handleClick}>Import</button>
+                <ToastContainer/></div>)}
 
             {isLoading && <h2>Loading...</h2>}
 
-            {/*<Search/>*/}
             <section className="garamond mt-5">
                 <div className="navy georgia ma0 grow">
                     <h2 className="f2">Search employee by forename and surname</h2>
@@ -170,8 +170,8 @@ function Home() {
                 {searchList()}
             </section>
         </>
+    )
 
-    );
 
 }
 

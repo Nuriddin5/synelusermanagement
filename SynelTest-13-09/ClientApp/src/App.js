@@ -6,7 +6,6 @@ import ViewEmployee from "./components/ViewEmployee";
 import Home from "./components/Home";
 import NotFoundPage from "./components/NotFoundPage";
 import DeleteEmployee from "./components/DeleteEmployee";
-import CreateEmployee from "./components/CreateEmployee";
 
 
 export default class App extends Component {
@@ -16,16 +15,12 @@ export default class App extends Component {
         return (
             <Layout>
                 <Routes>
-
-
                     <Route path={"employee/delete"}>
                         <Route path=":id" element={<DeleteEmployee/>}/>
                     </Route>
 
                     <Route path={"/"} element={<Home/>}/>
-
-                    <Route path={"/employee/create"} element={<CreateEmployee/>}/>
-
+                    
                     <Route path="employee">
                         <Route path=":id" element={<ViewEmployee/>}/>
                     </Route>
