@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import axios from "axios";
 import NotFoundPage from "./NotFoundPage";
+const { REACT_APP_API_ENDPOINT } = process.env;
 
 export default function ViewEmployee() {
     const {id} = useParams();
@@ -11,7 +12,7 @@ export default function ViewEmployee() {
     useEffect(() => {
         const fetch = async () => {
             try {
-                const {data} = await axios.get(`https://localhost:7290/api/Employees/${id}`);
+                const {data} = await axios.get(`${REACT_APP_API_ENDPOINT}/Employees/${id}`);
                 setEmployee(data);
             } catch (err) {
                 setErr(err)

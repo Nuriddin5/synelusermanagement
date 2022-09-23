@@ -1,6 +1,7 @@
 ﻿import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {ToastContainer} from "react-toastify";
+const { REACT_APP_API_ENDPOINT } = process.env;
 
 function Home() {
 
@@ -15,7 +16,7 @@ function Home() {
     
     const handleClick = async () => {
         try {
-            const response = await fetch('https://localhost:7290/api/import', {
+            const response = await fetch(`${REACT_APP_API_ENDPOINT}/import`, {
                 method: 'POST',
                 body: JSON.stringify({
                     filename: fileName
@@ -42,7 +43,7 @@ function Home() {
     useEffect(() => {
         const fetch = async () => {
             try {
-                const {data} = await axios.get(`https://localhost:7290/api/Employees`);
+                const {data} = await axios.get(`${REACT_APP_API_ENDPOINT}/Employees`);
                 // console.log(data);
                 setEmployees(data);
             } catch (err) {
@@ -76,7 +77,7 @@ function Home() {
             formData.append("formFile", file);
             formData.append("fileName", fileName);
             try {
-                const res = await axios.post("https://localhost:7290/api/file", formData);
+                const res = await axios.post(`${REACT_APP_API_ENDPOINT}/file`, formData);
                 if (res.status === 201) {
                     setFileUploaded(true);
                 }
